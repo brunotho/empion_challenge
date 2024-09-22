@@ -10,8 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 0) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_22_152808) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "applicants", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.bigint "culture_type_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["culture_type_id"], name: "index_applicants_on_culture_type_id"
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.bigint "culture_type_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["culture_type_id"], name: "index_companies_on_culture_type_id"
+  end
+
+  create_table "culture_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.bigint "applicant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["applicant_id"], name: "index_matches_on_applicant_id"
+    t.index ["company_id"], name: "index_matches_on_company_id"
+  end
+
+  add_foreign_key "applicants", "culture_types"
+  add_foreign_key "companies", "culture_types"
+  add_foreign_key "matches", "applicants"
+  add_foreign_key "matches", "companies"
 end
