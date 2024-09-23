@@ -1,6 +1,7 @@
 class Applicant < ApplicationRecord
   belongs_to :culture_type
   has_many :matches
+  has_many :companies, through: :matches
 
   validates :first_name, presence: true
   validates :last_name, presence: true

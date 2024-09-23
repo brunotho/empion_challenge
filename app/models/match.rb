@@ -4,7 +4,6 @@ class Match < ApplicationRecord
 
   def self.match_everything
     Match.delete_all
-
     applicants = Applicant.all
     applicants.each do |applicant|
       companies = Company.where(culture_type: applicant.culture_type)
