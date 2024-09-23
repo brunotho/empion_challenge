@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :applicant do
-    first_name { "Bob" }
-    last_name { "Banana" }
+    sequence(:first_name) { |n| "Bob #{n}" }
+    sequence(:last_name) { |n| "Banana #{n}" }
     culture_type { create(:culture_type) }
   end
 end
