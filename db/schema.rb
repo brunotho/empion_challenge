@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_22_152808) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_22_190433) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,6 +35,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_22_152808) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "taste"
+    t.integer "reaction_time"
+    t.string "ambition"
   end
 
   create_table "matches", force: :cascade do |t|
