@@ -3,10 +3,6 @@ class CultureTypesController < ApplicationController
     @culture_types = CultureType.all
   end
 
-  def new
-    @culture_type = CultureType.new
-  end
-
   def create
     @culture_type = CultureType.new(culture_type_params)
     if @culture_type.save
@@ -14,6 +10,10 @@ class CultureTypesController < ApplicationController
     else
       render :new, status: 422
     end
+  end
+
+  def new
+    @culture_type = CultureType.new
   end
 
   private
