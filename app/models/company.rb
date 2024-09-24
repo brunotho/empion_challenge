@@ -3,5 +3,5 @@ class Company < ApplicationRecord
   has_many :matches
   has_many :applicants, through: :matches
 
-  validates :name, presence: true
+  validates :name, presence: true, allow_blank: false
 end

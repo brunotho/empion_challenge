@@ -36,7 +36,6 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
-
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
@@ -49,8 +48,9 @@ RSpec.configure do |config|
     driven_by(driver)
   end
 
+  config.include Rails.application.routes.url_helpers
   config.include FactoryBot::Syntax::Methods
-
+  # config.include Rails.application.routes.url_helpers
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
     Rails.root.join('spec/fixtures')

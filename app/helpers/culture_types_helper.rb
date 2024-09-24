@@ -1,0 +1,2 @@
+module CultureTypesHelper
+end
