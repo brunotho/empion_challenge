@@ -8,4 +8,5 @@ Rails.application.routes.draw do
 
   resources :culture_types, only: [ :index, :create, :new ]
   resources :applicants, only: [ :index, :create, :new ]
+  resources :companies, only: [ :index, :show, :create, :new ]
 end

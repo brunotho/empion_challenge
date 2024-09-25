@@ -38,11 +38,12 @@ RSpec.describe 'Applicant', type: :request do
     end
 
     context 'with invalid parameters' do
-      let!(:invalid_parameters) { attributes_for(:applicant, first_name: '') }
+      let(:culture_type) { create(:culture_type) }
+      let(:invalid_attributes) { attributes_for(:applicant, first_name: '', culture_type_id: culture_type.id) }
 
       it 'does not create a new Applicant' do
         expect {
-          post applicants_path, params: { applicant: invalid_parameters }
+          post applicants_path, params: { applicant: invalid_attributes }
         }.to_not change(Applicant, :count)
         expect(response).to render_template(:new)
       end
